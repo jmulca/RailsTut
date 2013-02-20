@@ -1,8 +1,24 @@
 require 'spec_helper'
+include ApplicationHelper
 
 describe "Static pages" do
 
   subject { page }   # identify the subject of the test
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    page.should have_selector 'title', text: full_title('About Us')
+   # click_link "Help"
+   # page.should # fill in
+   # click_link "Contact"
+   # page.should # fill in
+   # click_link "Home"
+   # click_link "Sign up now!"
+   # page.should # fill in
+   # click_link "sample app"
+   # page.should # fill in
+  end
 
   # define method to eliminate test duplication
   shared_examples_for "all static pages" do
